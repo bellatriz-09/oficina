@@ -1,8 +1,3 @@
--- ============================================================
--- Esquema Lógico — Oficina Mecânica
--- Mapeamento do modelo conceitual (DER) para o modelo relacional.
--- ============================================================
-
 CREATE DATABASE IF NOT EXISTS oficina;
 USE oficina;
 
@@ -60,8 +55,6 @@ CREATE TABLE peca (
     valor_unitario  DECIMAL(10,2) NOT NULL
 );
 
--- Associação N:N entre ordem_servico e servico (uma OS tem vários serviços,
--- um serviço pode estar em várias OS); valor_cobrado pode variar por OS.
 CREATE TABLE item_servico (
     id_os           INT NOT NULL,
     id_servico      INT NOT NULL,
@@ -71,7 +64,6 @@ CREATE TABLE item_servico (
     FOREIGN KEY (id_servico) REFERENCES servico(id_servico)
 );
 
--- Associação N:N entre ordem_servico e peca, com a quantidade usada.
 CREATE TABLE item_peca (
     id_os           INT NOT NULL,
     id_peca         INT NOT NULL,
